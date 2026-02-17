@@ -1,0 +1,118 @@
+.secao-principal {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Área da logo */
+.logo-area {
+  margin-bottom: 24px;
+}
+
+.logo {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
+
+/* Coluna Esquerda (Formulário) */
+.esquerda {
+    flex: 1; /* Ocupa 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+/* O Segredo da Largura: container-login */
+.container-login {
+    width: 100%;
+    max-width: 400px; /* Trava a largura como na foto */
+    padding: 20px;
+}
+
+.container-login h1 {
+    font-size: 28px;
+    color: #123A6F;
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+}
+
+/* Estilo do Formulário e Blocos */
+#formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaço entre os blocos de input */
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Espaço entre Label e Input */
+}
+
+.input-block label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #123A6F;
+}
+
+/* Inputs idênticos à imagem */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #123A6F;
+    border-radius: 8px; /* Arredondamento suave */
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #1C75D4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(28, 117, 212, 0.2);
+}
+
+/* Botão Estilizado */
+button {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #123A6F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1C75D4;
+}
+
+/* Coluna Direita (Banner) */
+.direita {
+    flex: 1; /* Ocupa os outros 50% */
+    background: linear-gradient(135deg, #08142E 0%, #0D1B3D 50%, #123A6F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: white;
+}
+
+.conteudo-banner h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.conteudo-banner p {
+    color: #9FB3C8;
+    line-height: 1.6;
+}

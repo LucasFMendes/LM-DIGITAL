@@ -1,0 +1,333 @@
+/* =========================
+   RESET & VARIÁVEIS
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #00a884;
+  --primary-hover: #008f6b;
+  --text-main: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --bg-page: #f3f4f6;
+  --bg-surface: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+}
+
+/* =========================
+   LAYOUT GERAL
+========================= */
+.crm-page {
+  padding: 32px;
+  min-height: 100vh;
+  background: var(--bg-page);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =========================
+   HEADER & TOOLBAR
+========================= */
+.page-header-contacts {
+  background: var(--bg-surface);
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Linha superior: Título e Busca */
+.contacts-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.contacts-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* Linha inferior: Filtros e Botões */
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 42px;
+  padding: 0 16px 0 44px; /* Espaço para o ícone à esquerda */
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-page);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* =========================
+   FILTROS (TOGGLES)
+========================= */
+.filters-group {
+  display: flex;
+  gap: 20px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input {
+  display: none;
+}
+
+/* O "trilho" do switch */
+.toggle .slider {
+  width: 36px;
+  height: 20px;
+  background-color: #e2e8f0;
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+/* A "bolinha" do switch */
+.toggle .slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.toggle input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.toggle .label-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn.secondary:hover {
+  background: var(--bg-page);
+  color: var(--text-main);
+  border-color: #d1d5db;
+}
+
+/* =========================
+   TABELA
+========================= */
+.crm-content {
+  background: var(--bg-surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 16px; /* Espaço interno para não colar nas bordas */
+}
+
+/* Wrapper para scroll horizontal no mobile */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contatos-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  white-space: nowrap; /* Evita quebra de linha indesejada em nomes */
+}
+
+.contatos-table th {
+  text-align: left;
+  padding: 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+.contatos-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.contatos-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.contatos-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Estilo para a célula do usuário (Avatar + Nome) */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  background: #e0f2f1;
+  color: #00695c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.avatar-placeholder.alt {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+/* Etiquetas */
+.tag {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.tag.alt {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 768px) {
+  .contacts-header-row,
+  .header-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box {
+    max-width: 100%;
+  }
+
+  .filters-group {
+    justify-content: space-between;
+  }
+  
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Botões lado a lado */
+    gap: 8px;
+  }
+  
+  .actions .btn.primary {
+    grid-column: span 2; /* Botão principal ocupa largura total */
+  }
+}

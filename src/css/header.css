@@ -1,0 +1,202 @@
+/* ================= LAYOUT BASE ================= */
+
+.app-wrapper {
+  display: block;
+}
+
+.app-content {
+  margin-left: 240px;
+  min-height: 100vh;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f1f5f9;
+}
+
+/* Quando sidebar colapsada */
+.sidebar.collapsed ~ .app-content {
+  margin-left: 70px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #166534;
+  color: #ffffff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* ================= SIDEBAR CONTAINER ================= */
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ================= MENU ================= */
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+/* ================= LINKS ================= */
+
+.nav-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 15px;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.nav-link:hover {
+  background: #15803d;
+}
+
+.nav-link.active {
+  background: #14532d;
+}
+
+/* ================= HAMBURGER ================= */
+
+.hamburger-btn {
+  font-weight: 600;
+}
+
+.hamburger-icon {
+  font-size: 18px;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  background: #14532d;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 50px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.dropdown li a:hover {
+  background: #15803d;
+  color: #ffffff;
+}
+
+/* ================= SUBTÍTULO DROPDOWN ================= */
+
+.dropdown-subtitle {
+  padding: 10px 50px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #a7f3d0;
+  cursor: default;
+}
+
+/* ================= PERFIL / AJUDA ================= */
+
+.nav-item a[target="_blank"] {
+  color: #bbf7d0;
+}
+
+.nav-item a[target="_blank"]:hover {
+  background: #22c55e;
+  color: #064e3b;
+}
+
+/* ================= COLLAPSED ================= */
+
+.sidebar.collapsed .nav-link span:not(.hamburger-icon) {
+  display: none;
+}
+
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+  padding: 14px 0;
+}
+
+.sidebar.collapsed .dropdown {
+  display: none;
+}
+
+.sidebar.collapsed .nav-icon {
+  margin: 0 auto;
+}
+
+/* ================= SCROLLBAR ================= */
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #22c55e;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    z-index: 2000;
+  }
+
+  .app-content {
+    margin-left: 0;
+  }
+}

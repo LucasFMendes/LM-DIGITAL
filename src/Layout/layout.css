@@ -1,0 +1,78 @@
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --menu-width-open: 240px;
+  --menu-width-closed: 70px;
+  --transition: 0.3s ease;
+}
+
+/* =========================
+   LAYOUT BASE
+========================= */
+.app-layout {
+  display: flex;
+}
+
+/* Sidebar (fica no Header) */
+.sidebar {
+  width: var(--menu-width-open);
+  transition: width var(--transition);
+}
+
+/* Quando colapsado */
+.app-layout.collapsed .sidebar {
+  width: var(--menu-width-closed);
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+.app-content {
+  flex: 1;
+  margin-left: var(--menu-width-open);
+  transition: margin-left var(--transition);
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+/* Ajuste quando menu colapsado */
+.app-layout.collapsed .app-content {
+  margin-left: var(--menu-width-closed);
+}
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* MENU VERDE */
+.menu-lateral {
+  width: 64px;
+  background: #166534;
+  flex-shrink: 0;
+}
+
+/* ATENDIMENTO */
+.atendimento-page {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.atendimento-layout {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+/* GARANTE EXPANSÃO */
+.sidebar-conversas {
+  flex-shrink: 0;
+}
+
+.chat-window {
+  flex: 1;
+  min-width: 0;
+}

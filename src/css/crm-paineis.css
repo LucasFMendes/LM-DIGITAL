@@ -1,0 +1,349 @@
+:root {
+  /* Brand */
+  --brand-success: #166534;
+  --brand-danger: #d92d20;
+
+  /* Text */
+  --text-main: #1a2b45;
+  --text-muted: #64748b;
+  --text-soft: #94a3b8;
+
+  /* Backgrounds */
+  --bg-page: #f8f9fb;
+  --bg-card: #ffffff;
+  --bg-soft: #f8fafc;
+
+  /* Borders */
+  --border: #e6eaf0;
+  --border-soft: #f1f5f9;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Motion */
+  --transition: all 0.25s ease;
+}
+
+/* ============================================================
+   BASE RESET
+=============================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PAGE HEADER
+=============================================================== */
+.page-header {
+  padding: 48px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+/* ============================================================
+   GRID SYSTEM
+=============================================================== */
+.painel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  padding: 40px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* ============================================================
+   CARD COMPONENT
+=============================================================== */
+.painel-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+.painel-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--brand-success);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.painel-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.painel-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   CARD FOOTER
+=============================================================== */
+.card-footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border-soft);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ============================================================
+   NOVO PAINEL (STATEFUL CARD)
+=============================================================== */
+.painel-card.novo-painel {
+  min-height: 200px;
+  border: 2px dashed #cbd5e1;
+  background: #f9fafb;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.painel-card.novo-painel:hover {
+  border-color: var(--brand-success);
+  background: #f0fdf4;
+}
+
+.painel-card.novo-painel span {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-success);
+}
+
+.novo-painel small {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   ICONS
+=============================================================== */
+.icon-plus {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--brand-success);
+  color: #fff;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease;
+}
+
+.novo-painel:hover .icon-plus {
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   MODAL SYSTEM
+=============================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 2000;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  width: 960px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  padding: 40px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.96) translateY(12px);
+  opacity: 0;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.modal-overlay.is-open .modal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   FORM COMPONENTS
+=============================================================== */
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  padding-left: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 16px;
+  font-size: 14px;
+  background: #fff;
+  transition: var(--transition);
+  height: 42px;
+}
+
+.form-group textarea {
+  padding: 12px;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--brand-success);
+  box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.1);
+}
+
+/* ============================================================
+   BUTTONS (GENERIC SAAS STYLE)
+=============================================================== */
+.btn-base {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary-connect {
+  background: var(--brand-success);
+  color: #fff;
+}
+
+.btn-secondary-light {
+  background: var(--border-soft);
+  color: #475467;
+}
+
+.btn-abrir {
+  padding: 8px 20px;
+  font-size: 13px;
+  background: var(--brand-success);
+  color: #fff;
+}
+
+.btn-base:hover,
+.btn-abrir:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   BADGE
+=============================================================== */
+.badge-scope {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   RESPONSIVE
+=============================================================== */
+@media (max-width: 640px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .painel-grid {
+    padding: 20px;
+  }
+
+  .modal {
+    padding: 24px;
+  }
+}
